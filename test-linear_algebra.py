@@ -74,5 +74,51 @@ class TestLinearAlgebra(unittest.TestCase):
 
         self.assertEqual(result, expected_result)
 
+    def test_make_matrix(self):
+
+        result = lin_alg.make_matrix(5, 5, lin_alg.is_diagonal)
+        expected_result = [
+            [1,0,0,0,0],
+            [0,1,0,0,0],
+            [0,0,1,0,0],
+            [0,0,0,1,0],
+            [0,0,0,0,1]
+        ]
+        self.assertEqual(result, expected_result)
+
+    def test_shape(self):
+        matrix = [
+            [1,1,1,1,1],
+            [1,1,1,1,1],
+            [1,1,1,1,1]
+        ]
+
+        result = lin_alg.shape(matrix)
+        expected_result = (3, 5)
+
+        self.assertEqual(result, expected_result)
+
+    def test_get_row(self):
+        matrix = [
+            [1,2,3],
+            [4,5,6]
+        ]
+
+        result = lin_alg.get_row(matrix, 0)
+        expected_result = [1, 2, 3]
+
+        self.assertEqual(result, expected_result)
+
+    def test_get_column(self):
+        matrix = [
+            [1,2,3],
+            [4,5,6]
+        ]
+
+        result = lin_alg.get_column(matrix, 0)
+        expected_result = [1, 4]
+
+        self.assertEqual(result, expected_result)
+
 
 if __name__ == "__main__": unittest.main()
