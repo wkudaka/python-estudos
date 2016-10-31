@@ -1,4 +1,6 @@
-
+from collections import Counter
+from linear_algebra import sum_of_squares
+import math
 
 def mean(x):
     return sum(x) / len(x)
@@ -23,3 +25,28 @@ def median(v):
 def quantile(x, p):
     p_index = int(p * len(x))
     return sorted(x)[p_index]
+
+
+#valores mais comuns
+def mode(x):
+    counts = Counter(x)
+    max_count = max(counts.values())
+    return [x_i for x_i, count in counts.items() if count == max_count]
+
+
+def de_mean(x):
+    x_bar = mean(x)
+    return [x_i - x_bar for x_i in x]
+
+
+def variance(x):
+    n = len(x)
+    deviations = de_mean(x)
+    return sum_of_squares(deviations) / (n - 1)
+
+def standard_deviation(x):
+    return math.sqrt(variance(x))
+
+
+def interquartile_range(x):
+    return quantile(x, 0.75) - quantile(x, 0.25)

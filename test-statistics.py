@@ -36,5 +36,46 @@ class TestStatistics(unittest.TestCase):
         self.assertEqual(statistics.quantile(numbers, 0.5), 15)
         self.assertEqual(statistics.quantile(numbers, 0.8), 18)
 
+    def test_mode(self):
+        numbers = [20, 20, 20, 17, 17, 17, 15, 14, 13, 12, 11, 10]
+
+        result = statistics.mode(numbers)
+        expected_result = [17, 20]
+
+        self.assertEqual(result, expected_result)
+
+    def test_de_mean(self):
+        numbers = [5,5,5,5,5]
+
+        expected_result = [0.0, 0.0, 0.0, 0.0, 0.0]
+        result = statistics.de_mean(numbers)
+
+        self.assertEqual(result, expected_result)
+
+    def test_variance(self):
+        numbers = [3,4,6,5,7]
+
+        expected_variance = 2.5
+        variance = statistics.variance(numbers)
+
+        self.assertEqual(variance, expected_variance)
+
+
+    def test_standard_deviation(self):
+        numbers = [5,4,6,5,7, 5,6]
+        expected_deviation = 0.976
+
+        deviation = statistics.standard_deviation(numbers)
+        deviation = round(deviation, 3)
+
+        self.assertEqual(deviation, expected_deviation)
+
+    def test_interquartile_range(self):
+        numbers = [6,6,6,6,6,6,6,1,1,5,5,5,6,5]
+        expected_interquartile = 1
+
+        interquartile = statistics.interquartile_range(numbers)
+
+        self.assertEqual(interquartile, expected_interquartile)
 
 if __name__ == "__main__": unittest.main()
