@@ -78,4 +78,27 @@ class TestStatistics(unittest.TestCase):
 
         self.assertEqual(interquartile, expected_interquartile)
 
+    def test_covariance(self):
+
+        x = [50, 40, 20, 10]
+        y = [25, 20, 10, 5]
+        covariance = statistics.covariance(x, y)
+        covariance = round(covariance, 2)
+
+        expected_covariance = 166.67
+        self.assertEqual(covariance, expected_covariance)
+
+    def test_correlation(self):
+
+        x = [50, 40, 20, 10]
+        y = [25, 20, 10, 5]
+        correlation = statistics.correlation(x, y)
+
+        expected_correlation = 1.0
+
+        self.assertEqual(correlation, expected_correlation)
+
+
+
+
 if __name__ == "__main__": unittest.main()
