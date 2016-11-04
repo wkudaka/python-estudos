@@ -22,5 +22,11 @@ class TestStatistics(unittest.TestCase):
         self.assertEqual(probability.normal_cdf(99999), 1.0)
         self.assertEqual(probability.normal_cdf(0), 0.5)
 
+    def test_inverse_normal_cdf(self):
+
+        self.assertEqual(probability.inverse_normal_cdf(0.5), 0)
+        self.assertLess(probability.inverse_normal_cdf(0.49), 0)
+        self.assertGreater(probability.inverse_normal_cdf(0.51), 0)
+
 
 if __name__ == "__main__": unittest.main()
