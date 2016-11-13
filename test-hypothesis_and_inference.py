@@ -10,5 +10,13 @@ class TestLinearAlgebra(unittest.TestCase):
         self.assertEqual(mu, 500)
         self.assertEqual(round(sigma, 2), 15.81)
 
+    def test_normal_two_sided_bounds(self):
+        mu, sigma = hyp_inf.normal_approximation_to_binomial(1000, 0.5)
+        lo, hi = hyp_inf.normal_two_sided_bounds(0.95, mu, sigma)
+
+        self.assertEqual(round(lo, 2), 469.01)
+        self.assertEqual(round(hi, 2), 530.99)
+
+
 
 if __name__ == "__main__": unittest.main()
