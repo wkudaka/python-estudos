@@ -34,3 +34,15 @@ def normal_two_sided_bounds(probability, mu=0, sigma=1):
     lower_bound = normal_upper_bound(tail_probability, mu, sigma)
 
     return lower_bound, upper_bound
+
+
+#a/b test
+def estimated_parameters(N, n):
+    p = n / N
+    sigma = math.sqrt(p * (1 - p) / N)
+    return p, sigma
+
+def a_b_test_statistic(N_A, n_A, N_B, n_B):
+    p_A, sigma_A = estimated_parameters(N_A, n_A)
+    p_B, sigma_B = estimated_parameters(N_B, n_B)
+    return (p_B - p_A) / math.sqrt(sigma_A ** 2 + sigma_B ** 2)

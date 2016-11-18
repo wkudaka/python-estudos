@@ -17,6 +17,9 @@ class TestLinearAlgebra(unittest.TestCase):
         self.assertEqual(round(lo, 2), 469.01)
         self.assertEqual(round(hi, 2), 530.99)
 
+    def test_a_b_test_statistic(self):
+        z = hyp_inf.a_b_test_statistic(1000, 200, 1000, 180)
+        self.assertEqual(round(z, 2), -1.14)
 
 
 if __name__ == "__main__": unittest.main()
